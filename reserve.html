@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hot Restaurant</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center">
+                <span class="glyphicon glyphicon-fire">
+                </span>
+                "Hot Restaurant"
+            </h1>
+            <h2 class="text-center">Make your reservation</h2>
+
+            <form class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="name-input">Name</label>
+                    <input type="input" class="form-control" id="name-input" aria-describedby="emailHelp" placeholder="Your name" required>
+                    <div class="invalid-feedback">
+                        Please enter a name.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone-number-input">Phone Number</label>
+                    <input type="input" class="form-control" id="phone-number-input" placeholder="612-123-4567" required>
+                    <div class="invalid-feedback">
+                        Enter a valid phone number.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email-input">Email</label>
+                    <input type="input" class="form-control" id="email-input" placeholder="youraddress@aol.com" required>
+                    <div class="invalid-feedback">
+                        Enter a valid email address.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="unique-id-input">Unique ID</label>
+                    <input type="input" class="form-control" id="unique-id-input" placeholder="Your unique id (Max 20 characters)"required>
+                    <div class="invalid-feedback">
+                        Enter a unique ID of your choice.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+              var forms = document.getElementsByClassName('needs-validation');
+              // Loop over them and prevent submission
+              var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+                }, false);
+              });
+            }, false);
+          })();
+    </script>
+</body>
+</html>
