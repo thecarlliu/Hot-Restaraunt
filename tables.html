@@ -1,0 +1,111 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hot Restaurant</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="text-center">
+                <span class="glyphicon glyphicon-fire">
+                </span>
+                "Hot Restaurant"
+            </h1>
+            <h2 class="text-center">Make your reservation</h2>
+
+            <form>
+                <div class="form-group">
+                    <label for="name-input">Name</label>
+                    <input type="input" class="form-control" id="name-input" aria-describedby="emailHelp" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="phone-number-input">Phone Number</label>
+                    <input type="input" class="form-control" id="phone-number-input" placeholder="612-123-4567">
+                </div>
+                <div class="form-group">
+                    <label for="email-input">Email</label>
+                    <input type="input" class="form-control" id="email-input" placeholder="youraddress@aol.com">
+                </div>
+                <div class="form-group">
+                    <label for="unique-id-input">Unique ID</label>
+                    <input type="input" class="form-control" id="unique-id-input" placeholder="Your unique id (Max 20 characters)">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+                <!-- Current Tables in Use -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Current Reservations</h4>
+                    </div>
+                    <div class="panel-body" id="tableSection">
+                    </div>
+                </div>
+
+                <!-- Waiting List Panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Waiting List</h4>
+                    </div>
+                    <div class="panel-body" id="waitlistSection">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script type="text/javascript">
+
+ 
+  $(".submit").on("click", function(){
+
+    var newReservation = {
+      customerName: $('#reserve_name').val().trim(),
+      phoneNumber: $('#reserve_phone').val().trim(),
+      customerEmail: $('#reserve_email').val().trim(),
+      customerID: $('#reserve_uniqueID').val().trim()
+    };
+
+    console.log(newReservation);
+
+    
+    var currentURL = window.location.origin;
+
+      $.post(currentURL + "/api/tables", newReservation,
+      function(data){
+
+        if(data == true){
+          alert("Yay! You are officially booked!")
+        }
+
+        if(data == false){
+          alert("Sorry you are on the wait list")
+        }
+
+        $('#reserve_name').val("");
+      $('#reserve_phone').val("");
+      $('#reserve_email').val("");
+      $('#reserve_uniqueID').val("");
+
+      });
+
+return false;
+
+});
+
+</script>
+        
+    </script>
+</body>
+</html>
+>>>>>>> 11528573fed1c0f9bbd0792134989ab88c1cadd6
