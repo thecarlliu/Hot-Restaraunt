@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 var reservations = [
     {
-        routeName: "reservation1",
+        routeName: "table1",
         name: "Carl",
         persons: "5",
         date: "2/25/18",
@@ -29,13 +29,13 @@ var waitList = [
 ];
 
 app.get("/", function(req, res) {
-    //res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/tables", function(req, res) {
     //res.sendFile(path.join(__dirname, "tables.html"));
     res.json(reservations);
-    res.json(waitList);
+    //res.json(waitList);
 });
 
 app.listen(PORT, function() {
