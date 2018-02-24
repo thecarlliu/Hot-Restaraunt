@@ -35,12 +35,15 @@ app.get("/", function(req, res) {
 });
 
 app.get("/tables", function(req, res) {
-    //res.sendFile(path.join(__dirname, "tables.html"));
-    res.json(reservations);
-    res.json(waitList);
+    res.sendFile(path.join(__dirname, "tables.html"));
+    //for testing: to view the JSON of our reservations and waitList
+    //res.json(reservations);
+    //res.json(waitList);
 });
 
-app.get("/add", )
+app.get("/reserve", function(req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
+});
 
 // Create New Characters - takes in JSON input
 app.post("/api/new", function(req, res) {
@@ -52,6 +55,7 @@ app.post("/api/new", function(req, res) {
         alert("Sadly, there were no tables left, so you have been placed on our waiting list.");
         waitList.push(newReservation);
     }
+    res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 app.listen(PORT, function() {
