@@ -38,6 +38,18 @@ app.get("/tables", function(req, res) {
     //res.json(waitList);
 });
 
+// Create New Characters - takes in JSON input
+app.post("/api/new", function(req, res) {
+    var newReservation = req.body;
+    newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
+    if (reservations.length < 5) {
+        reservations.push(newReservation);
+    }
+    else {
+        waitList.push(newReservation);
+    }
+});
+
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
