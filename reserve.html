@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <div class="form-check">
                         <label class="form-check" for="phone-number-input">Phone Number</label>
-                        <input type="input" class="form-control" id="phone-number-input" placeholder="612-123-4567" required>
+                        <input type="input" class="form-control" id="phone-number-input" placeholder="Format: XXX-XXX-XXXX" required>
                         <!-- <div class="invalid-feedback">
                             Enter a valid phone number.
                         </div> -->
@@ -59,15 +59,24 @@
                     </div>
                 </div>
                 <div class="form-group">
-                        <div class="form-check">
-                            <label class="form-check" for="unique-id-input">Pick a date</label>
-                            <input type="input" class="form-control" id="unique-id-input" placeholder="01/01/2018" required>
-                            <!-- <div class="invalid-feedback">
-                                Enter a unique ID of your choice.
-                            </div> -->
-                        </div>
+                    <div class="form-check">
+                        <label class="form-check" for="date-input">Pick a date</label>
+                        <input type="input" class="form-control" id="date-input" placeholder="Format: 01/01/2018" required>
+                        <!-- <div class="invalid-feedback">
+                            Enter a unique ID of your choice.
+                        </div> -->
                     </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <label class="form-check" for="time-input">Pick a time</label>
+                        <input type="input" class="form-control" id="time-input" placeholder="Format: XX:XX AM/PM" required>
+                        <!-- <div class="invalid-feedback">
+                            Enter a unique ID of your choice.
+                        </div> -->
+                    </div>
+                </div>
+                <button type="submit" id= "submit-btn" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
@@ -89,6 +98,23 @@
               });
             }, false);
           })();
+        // Question: What does this code do?
+        $("#submit-btn").on("click", function(event) {
+            event.preventDefault();
+            var newReservation = {
+                name: $("#name-input").val().trim(),
+                phone: $("#phone-number-input").val().trim(),
+                email: $("#email-input").val().trim(),
+                persons: $("#party-input").val().trim(),
+                date: $("#date-input").val().trim(),
+                time: $("#time-input").val().trim()
+            };
+            $.post("/api/new", newReservation)
+                .then(function(data) {
+                console.log(data);
+                alert("Added your reservation.");
+                });
+        });
     </script>
 </body>
 </html>
