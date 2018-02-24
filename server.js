@@ -10,21 +10,23 @@ app.use(bodyParser.json());
 
 var reservations = [
     {
-        routeName: "table1",
         name: "Carl",
+        phone: "111-111-1111",
+        email: "carl@carlmail.com",
         persons: "5",
-        date: "2/25/18",
-        time: "8pm"
+        date: "2/25/2018",
+        time: "08:00 PM"
     }
 ];
 
 var waitList = [
     {
-        routeName: "wait1",
-        name: "Derek",
+        name: "Random",
+        phone: "222-222-2222",
+        email: "random@randommail.com",
         persons: "6",
-        date: "2/28/18",
-        time: "7pm"
+        date: "2/28/2018",
+        time: "07:00 PM"
     }
 ];
 
@@ -35,17 +37,19 @@ app.get("/", function(req, res) {
 app.get("/tables", function(req, res) {
     //res.sendFile(path.join(__dirname, "tables.html"));
     res.json(reservations);
-    //res.json(waitList);
+    res.json(waitList);
 });
+
+app.get("/add", )
 
 // Create New Characters - takes in JSON input
 app.post("/api/new", function(req, res) {
     var newReservation = req.body;
-    newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
     if (reservations.length < 5) {
         reservations.push(newReservation);
     }
     else {
+        alert("Sadly, there were no tables left, so you have been placed on our waiting list.");
         waitList.push(newReservation);
     }
 });
